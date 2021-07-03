@@ -5,21 +5,32 @@ class Counter extends Component {
     count: 0
   };
 
-  style ={
-
+  style = {
     fontSize: '10px',
-    fontWeight: "bold"
-  }
-
+    fontWeight: 'bold'
+  };
 
   render() {
     return (
       <div>
-        <span style={this.style} className="badge badge-primary m-2">{this.formatCount()}</span>
+        <span style={this.style} className={this.getBadgeClasses()}>
+          {this.formatCount()}
+        </span>
 
-        <button style={{fontSize: "20px"}} className="btn btn-secondary btn-sm">increment</button>
+        <button
+          style={{ fontSize: '20px' }}
+          className="btn btn-secondary btn-sm"
+        >
+          increment
+        </button>
       </div>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = 'badge m-2 badge-';
+    classes += this.state.count === 0 ? 'warning' : 'primary';
+    return classes;
   }
 
   formatCount() {
