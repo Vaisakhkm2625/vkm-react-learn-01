@@ -11,6 +11,18 @@ class Counter extends Component {
     fontWeight: 'bold'
   };
 
+  renderTags() {
+    if (this.state.tags.length === 0) {
+      return <p>there are no tags</p>;
+    }
+    else
+    return  <ul>
+    {this.state.tags.map(tag => (
+      <li key={tag}>{tag}</li>
+    ))}
+  </ul>;
+  }
+
   render() {
     return (
       <div>
@@ -25,11 +37,9 @@ class Counter extends Component {
           increment
         </button>
 
-        <ul>
-          {this.state.tags.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        {this.state.tags.length ===0 &&<p>please enter some tags</p>}
+        {this.renderTags()}
+       
       </div>
     );
   }
