@@ -14,13 +14,18 @@ class Counter extends Component {
   renderTags() {
     if (this.state.tags.length === 0) {
       return <p>there are no tags</p>;
-    }
-    else
-    return  <ul>
-    {this.state.tags.map(tag => (
-      <li key={tag}>{tag}</li>
-    ))}
-  </ul>;
+    } else
+      return (
+        <ul>
+          {this.state.tags.map(tag => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      );
+  }
+
+  handleIncrement() {
+    console.log('increment clicked');
   }
 
   render() {
@@ -31,15 +36,15 @@ class Counter extends Component {
         </span>
 
         <button
+          onClick={this.handleIncrement}
           style={{ fontSize: '20px' }}
           className="btn btn-secondary btn-sm"
         >
           increment
         </button>
 
-        {this.state.tags.length ===0 &&<p>please enter some tags</p>}
+        {this.state.tags.length === 0 && <p>please enter some tags</p>}
         {this.renderTags()}
-       
       </div>
     );
   }
